@@ -1,0 +1,82 @@
+
+alias proj='cd ~/cvs/src/project_tiger'
+alias base='cd ~/cvs/src/common/c_cpp/libsrc/netdatasys/base'
+alias ace='cd ~/cvs/src/common/c_cpp/libsrc/thirdparty/ACE/ACE_wrappers'
+alias netsnmp='cd ~/cvs/src/common/c_cpp/libsrc/thirdparty/netsnmp/netsnmp/snmplib'
+
+cp () 
+{
+ if [ -z "$1" ]
+ then
+   /bin/cp -i;
+ else
+   /bin/cp -i $* ;
+ fi
+}
+
+mv () 
+{
+ if [ -z "$1" ]
+ then
+   /bin/mv -i;
+ else
+   /bin/mv -i $* ;
+ fi
+};
+
+rm () 
+{
+ if [ -z "$1" ]
+ then
+   /bin/rm -i;
+ else
+   /bin/rm -i $* ;
+ fi
+}
+
+ll () 
+{
+ if [ -z "$1" ]
+ then
+   ls -al |more;
+ else
+   ls -al $* |more;
+ fi
+}
+
+cvsdiff ()
+{
+ if [ ! -z "$1" ]
+ then
+   cvs diff -c $* |more;
+ fi
+}
+
+cvslog ()
+{
+ if [ ! -z "$1" ]
+ then
+   cvs log $* |more;
+ fi
+}
+
+myf ()
+{
+ path=.
+ fls=
+ ss=
+
+ if [ ! -z "$3" ]
+ then
+   path=$1
+   fls=$2
+   ss=$3
+ else
+   fls=$1
+   ss=$2
+ fi
+
+ find $path -name $fls -exec grep -l $ss {} \;
+}
+
+

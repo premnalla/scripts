@@ -1,0 +1,146 @@
+#********ENV**********#
+#********ENV**********#
+#********ENV**********#
+
+declare -x PATH="/bin:/usr/bin:/usr/local/bin:/usr/sbin:/usr/local/sbin:/opt/sfw/bin:/opt/sfw/sbin:/usr/dt/bin:/usr/openwin/bin:/usr/ccs/bin:/usr/ucb:$PATH"
+
+declare -x LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
+
+export CVS_RSH="ssh"
+export CVSROOT=":ext:prem@192.168.1.104:/opt/projects/CvsRoot"
+
+#********ALIAS**********#
+#********ALIAS**********#
+#********ALIAS**********#
+#********ALIAS**********#
+
+cp ()
+{
+ if [ -z "$1" ]
+ then
+   /bin/cp -i;
+ else
+   /bin/cp -i $* ;
+ fi
+}
+
+mv ()
+{
+ if [ -z "$1" ]
+ then
+   /bin/mv -i;
+ else
+   /bin/mv -i $* ;
+ fi
+};
+
+rm ()
+{
+ if [ -z "$1" ]
+ then
+   /bin/rm -i;
+ else
+   /bin/rm -i $* ;
+ fi
+}
+
+ll ()
+{
+ if [ -z "$1" ]
+ then
+   ls -al |more;
+ else
+   ls -al $* |more;
+ fi
+}
+
+pss () {
+ if [ -z "$1" ]
+ then
+   ps -ef |more;
+ else
+   ps -ef |grep $* |more;
+ fi
+}
+
+
+#
+#
+#
+
+cvslsco () {
+  OUT_FILE="/tmp/cvs_nq_update";
+  AWK_INFILE="$OUT_FILE.awk.in";
+  CAT_INFILE="$OUT_FILE.out";
+
+  #echo "$AWK_INFILE; $CAT_INFILE";
+
+  if [ -f $AWK_INFILE ]
+  then
+    /bin/rm $AWK_INFILE ;
+  fi
+
+  if [ -f $CAT_INFILE ]
+  then
+    /bin/rm $CAT_INFILE ;
+  fi
+
+  cvs -nq update |grep "M " >> $AWK_INFILE
+
+  if [ ! -z $1 ] && [ $1 == "all" ]
+  then
+    #echo "prem: $1"
+    #if [ $1 == "all" ]
+    #then
+    #  cvs -nq update |grep "? " >> $AWK_INFILE
+    #fi
+    cvs -nq update |grep "? " >> $AWK_INFILE
+  fi
+
+  awk -f ~prem/Awk/CvsNQ.awk $AWK_INFILE >> $CAT_INFILE
+  cat $CAT_INFILE |more
+}
+
+cvsdiff () {
+ if [ -z "$1" ]
+ then
+   echo "File(s) need to be specified"
+ else
+   clear
+   cvs diff -c $* |more ;
+ fi
+}
+
+cvslog () {
+ if [ -z "$1" ]
+ then
+   echo "File(s) need to be specified"
+ else
+   clear
+   cvs log $* |more ;
+ fi
+}
+
+cvsco () {
+ if [ -z "$1" ]
+ then
+   echo "Need to specify path"
+ else
+   cvs checkout $2 ;
+ fi
+}
+
+cvsci () {
+ if [ -z "$1" ]
+ then
+   echo "Need to specify comment for check-in"
+ else
+   if [ -z "$2" ]
+     echo "Need a file for check-in"
+   then
+     cvs commit -m "$1" $2 ;
+   fi
+ fi
+}
+
+

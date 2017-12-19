@@ -1,0 +1,29 @@
+<stdin>:2: error: invalid preprocessing directive #The
+<stdin>:3: error: invalid preprocessing directive #X
+<stdin>:5: error: invalid preprocessing directive #*
+<stdin>:6: error: invalid preprocessing directive #*
+<stdin>:7: error: invalid preprocessing directive #*
+<stdin>:8: error: invalid preprocessing directive #The
+<stdin>:10: error: invalid preprocessing directive #xterm
+<stdin>:11: error: invalid preprocessing directive #xterm
+<stdin>:12: error: invalid preprocessing directive #xterm
+<stdin>:13: error: invalid preprocessing directive #xterm
+<stdin>:14: error: invalid preprocessing directive #xterm
+<stdin>:15: error: invalid preprocessing directive #xterm
+<stdin>:16: error: invalid preprocessing directive #xterm
+<stdin>:17: error: invalid preprocessing directive #xterm
+<stdin>:18: error: invalid preprocessing directive #xterm
+<stdin>:19: error: invalid preprocessing directive #xterm
+<stdin>:22: error: invalid preprocessing directive #xclock
+<stdin>:23: error: invalid preprocessing directive #xclock
+<stdin>:24: error: invalid preprocessing directive #xclock
+<stdin>:25: error: invalid preprocessing directive #xclock
+<stdin>:26: error: invalid preprocessing directive #xclock
+<stdin>:27: error: invalid preprocessing directive #xclock
+/etc/X11/xim: Checking wether an input method should be started.
+INPUT_METHOD is not set or empty (no user selected input method).
+Trying to start a default input method for the locale en_US.UTF-8 ...
+There is no default input method for the current locale.
+icewm-session: using /home/prem/.icewm for private configuration files
+IceWM: using /home/prem/.icewm for private configuration files
+icewmbg: using /home/prem/.icewm for private configuration files
