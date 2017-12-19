@@ -1,0 +1,5 @@
+1234|foo prem|bar|9632|zoo
+5678|foo|bar|9632|zoo
+9012|foo gnu|bar|9632|zoo
+3456|foo|bar|9632|zoo
+7890|foo|bar|9632|zoo
